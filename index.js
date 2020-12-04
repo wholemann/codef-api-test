@@ -86,7 +86,7 @@ async function createAccessToken() {
   return accessToken;
 }
 
-async function queryContracts(token) {
+async function queryContracts(accessToken) {
   const data = await request('v1/kr/insurance/0001/credit4u/contract-info', {
     organization: '0001',
     id: KCREDIT_ID,
@@ -97,7 +97,7 @@ async function queryContracts(token) {
     telecom: '0',
     phoneNo: '010********',
     timeout: '160',
-  }, token);
+  }, accessToken);
 
   print(urlencode.decode(data));
 
@@ -105,8 +105,8 @@ async function queryContracts(token) {
 }
 
 async function main() {
-  const token = await createAccessToken();
-  await queryContracts(token);
+  const accessToken = await createAccessToken();
+  await queryContracts(accessToken);
 }
 
 main();
