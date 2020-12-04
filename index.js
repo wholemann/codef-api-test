@@ -100,8 +100,6 @@ async function queryContracts(accessToken) {
   }, accessToken);
 
   print(urlencode.decode(data));
-
-  return data;
 }
 
 async function main() {
